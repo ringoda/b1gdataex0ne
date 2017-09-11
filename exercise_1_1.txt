@@ -4,6 +4,8 @@ b1gdataex0ne
 lorem.txt:
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper ex in dolor porta, ultricies imperdiet risus consectetur. Suspendisse vel lectus et urna viverra ornare eu ut quam. Maecenas hendrerit, massa nec rutrum vulputate, magna tortor sollicitudin justo, ut VARIUS erat magna in justo. Pellentesque at nunc vitae enim porta ultricies. Sed ullamcorper lacus non pulvinar consequat. Donec imperdiet aliquam justo. Proin laoreet mauris eu metus varius accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam nibh risus, dapibus at tincidunt vel, consectetur non dui. Suspendisse dictum libero turpis, sed tincidunt dolor euismod a. Donec."
 
+
+
 tr -cs '[:alnum:]' '[\n*]' < lorem.txt | sort | uniq -c | sort -nr | head  -10
 
    3 varius
@@ -24,7 +26,14 @@ comm -23 <(tr -s '[[:punct:][:space:]]' '\n' < shakespeare.txt|tr '[:upper:]' '[
      721
 
 1.3
-
+Filter a syslog text file for log messages that are of the <Error> level
+Command:
+	sed -n '/<Error>/ p' syslog.txt
+Input:
+	syslog.txt
+Output:
+	Sep 11 17:50:55 user networkd[179] <Error>: -[NETProxyLookup pacLookupComplete:proxies:error:] PAC evaluation error: Error Domain=kCFErrorDomainCFNetwork Code=2 "(null)" UserInfo={kCFGetAddrInfoFailureKey=8}
+	Sep 11 18:05:46 user networkd[179] <Error>: -[NETProxyLookup pacLookupComplete:proxies:error:] PAC evaluation error: Error Domain=kCFErrorDomainCFNetwork Code=2 "(null)" UserInfo={kCFGetAddrInfoFailureKey=8}
 
 1.4
 Increase all prices in a comma seperated textfile by 10% using awk.
